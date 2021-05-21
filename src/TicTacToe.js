@@ -1,6 +1,9 @@
 import React, {useContext, useState} from "react";
 import { BoardContext } from "./App";
 import produce from "immer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+
 
 function TicTacToe() {
   
@@ -12,6 +15,16 @@ function TicTacToe() {
     [-1, -1, -1],
     [-1, -1, -1], ];
   let [moves, setMoves] = useState(0);
+  
+  const element = <FontAwesomeIcon icon={faGithub}/>
+
+  let isDesktop;
+  if(window.innerWidth <= 600){
+    isDesktop = false;
+  }
+  else{
+    isDesktop = true;
+  }
 
   let winLogic = function(board1){
     
@@ -72,36 +85,48 @@ function TicTacToe() {
       background: "#9999",
       display: "flex",
       flexDirection: "row",
-      justifyContent: "space-evenly",
+      justifyContent: "center",
       alignItems: "center"
       }}> 
       
-      <div style={{
-        color: "#ffffff",
-        //margin: "0px 100px"
-      }}>
+      <div style={{ 
+        height: "100vh",
+        width: "33.3%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center"
+         }} className="hide" >
         <div style={{
-          background: "#FF5E13",
-          borderRadius: "50px",
-          padding: "8px 20px",
-          paddingBottom: "12px",
-          margin: "15px 0px"
-        }}>Player 1 - <span role="img" aria-label="circle">⭕</span></div>
-        <div style={{
-          background: "#00b300",
-          borderRadius: "50px",
-          padding: "8px 20px",
-          paddingBottom: "12px",
-          margin: "15px 0px"}}>
-          Player 2 - <span role="img" aria-label="cross">❌</span></div>
+          color: "#ffffff",
+          //flexShrink: "2"
+        }}>
+          <div style={{
+            background: "#FF5E13",
+            borderRadius: "50px",
+            padding: "8px 20px",
+            paddingBottom: "12px",
+            margin: "15px 0px"
+          }}  >Player 1 - <span role="img" aria-label="circle">⭕</span></div>
+          <div style={{
+            background: "#00b300",
+            borderRadius: "50px",
+            padding: "8px 20px",
+            paddingBottom: "12px",
+            margin: "15px 0px"}}  >
+            Player 2 - <span role="img" aria-label="cross">❌</span></div>
+        </div>
       </div>
-
       <div style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-evenly",
-        alignItems: "center"
-      }}>
+        alignItems: "center",
+        height: "100vh",
+        width: "33.3%",
+        margin: "0px",
+        paddingTop: "20px"
+      }} className="shrink">
         <div style={{
           background: "#00b300",
           color: "#ffffff",
@@ -109,18 +134,22 @@ function TicTacToe() {
           borderRadius: "50px",
           padding: "4px 20px",
           paddingBottom: "6px",
-          margin: "23px 0px"
-        }}>{msg}</div>
+          textAlign: "center",
+          margin: "0px",
+          whiteSpace: "nowrap"
+        }} >{msg}</div>
         <div style={{
           padding: "0px",
-          margin: "20px 0px",
-          fontWeight: "normal"
-        }}>Turn : Player { player+1}</div>
+          fontWeight: "normal",
+          margin: "0px",
+          whiteSpace: "nowrap"
+        }} >Turn : Player { player+1}</div>
         
         <div style={{
           background: "#FF5E13",
           padding: "11px",
-        }}>
+          marginBottom: "10px",
+        }} className="shrinkbox">
         {
           board.map(function(row, rowIndex){
             return ( 
@@ -135,7 +164,6 @@ function TicTacToe() {
                   height: "115px",
                   margin: "3px",
                   fontSize: "35px"
-                  //borderRadius: "20px",
                   
                 }} onClick={function(){
                     const updated = produce(board, (draftState) => {
@@ -162,16 +190,45 @@ function TicTacToe() {
           })
         }
         </div>
+
         <div style={{
-          marginTop: "115px",
-          marginBottom: "0px",
+            background: "#FF5E13",
+            borderRadius: "50px",
+            padding: "2px 10px",
+            paddingBottom: "4px",
+            margin: "0px",
+            fontSize: "30px",
+            color: "#ffffff",
+            display: isDesktop ? "none" : "",
+            whiteSpace: "nowrap"
+          }} className="show" >Player 1 - <span role="img" aria-label="circle">⭕</span></div>
+          <div style={{
+            background: "#00b300",
+            borderRadius: "50px",
+            padding: "2px 10px",
+            paddingBottom: "4px",
+            margin: "0px",
+            fontSize: "30px",
+            display: isDesktop ? "none" : "", 
+            color: "#ffffff",
+            whiteSpace: "nowrap" }} className="show" >
+            Player 2 - <span role="img" aria-label="cross">❌</span>
+        </div>
+
+        <div style={{
           padding: "0px",
-          fontSize: "25px",
-          fontWeight: "normal" }}>Made by - Deepak Yadav </div>
+          fontSize: "45px",
+          fontWeight: "normal",
+          margin: "0px",
+          marginTop: "0px",
+          textAlign: "center",
+          whiteSpace: "nowrap"
+          }} ><a href="https://github.com/deepak-yadavdy/tic-tac-toe">{element}</a></div>
       </div>
 
-      <div style={{ margin: " 0px 115px"
-      }}></div>
+      <div style={{
+        width: "33.3%"
+      }} className="hide"></div>
     </div>
     );
 }

@@ -7,6 +7,16 @@
   pointer-events: none;
 }
 
+@media only screen and (max-width: 600px) {
+  .hide {
+    transform: scale(0);
+  }
+  .shrink{
+    transform: scale(0.9);
+  }
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

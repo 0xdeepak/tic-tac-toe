@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import TicTacToe from "./TicTacToe";
 import {createBoard} from "./utils/boardUtils";
+import './App.css';
 
 let BoardContext = React.createContext();
 function App() {
