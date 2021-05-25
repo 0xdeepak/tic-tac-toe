@@ -16,6 +16,23 @@
   }
 }
 
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .third {
+    display: none;
+  }
+  .first{
+    transform: scale(0.9);
+  }
+  .shrink{
+    position: relative;
+    left: 12px;
+    top: -44px;
+  }
+  .first{
+    position: relative;
+     left: -85px;
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

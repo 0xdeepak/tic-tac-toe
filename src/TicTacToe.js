@@ -79,6 +79,7 @@ function TicTacToe() {
   return (
     <div style={{
       height: "100vh",
+      minHeight: "780px",
       width: "100%",
       fontSize: "40px",
       fontWeight: "bold",
@@ -96,17 +97,18 @@ function TicTacToe() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center"
-         }} className="hide" >
+         }} className="hide first" >
         <div style={{
           color: "#ffffff",
-          //flexShrink: "2"
+          //whiteSpace: "nowrap",
+          textAlign: "center",
         }}>
           <div style={{
             background: "#FF5E13",
             borderRadius: "50px",
             padding: "8px 20px",
             paddingBottom: "12px",
-            margin: "15px 0px"
+            margin: "15px 0px",
           }}  >Player 1 - <span role="img" aria-label="circle">⭕</span></div>
           <div style={{
             background: "#00b300",
@@ -228,7 +230,7 @@ function TicTacToe() {
 
       <div style={{
         width: "33.3%"
-      }} className="hide"></div>
+      }} className="hide third"></div>
     </div>
     );
 }
